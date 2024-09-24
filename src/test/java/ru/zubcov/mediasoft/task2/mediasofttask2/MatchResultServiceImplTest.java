@@ -213,7 +213,6 @@ public class MatchResultServiceImplTest {
 
         List<MatchResult> result = matchResultService.getMatchResultsByDateAndSeason(date, season);
 
-        // Проверяем результат
         assertNotNull(result);
         assertEquals(2, result.size());
         verify(matchResultRepository, times(1)).findAllByMatchDateLessThanEqualAndBySeason(date, season);  // Проверяем вызов с обоими параметрами

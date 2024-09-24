@@ -66,26 +66,32 @@ class TeamServiceImplTest {
         verify(teamRepository, never()).save(any(Team.class));
     }
 
-    // Test for updateTeam method
+
     @Test
-    void shouldUpdateTeamSuccessfully() {
+    void shouldThrowExceptionWhenUpdatingToExistingTeamName() {
         long teamId = 1L;
         UpdateTeamRequest request = new UpdateTeamRequest();
-        request.setName("Updated Team");
+        request.setName("Existing Team");
+
         Team existingTeam = new Team();
         existingTeam.setId(teamId);
         existingTeam.setName("Old Team");
 
+        Team anotherTeam = new Team();
+        anotherTeam.setId(2L);
+        anotherTeam.setName("Existing Team");
+
         when(teamRepository.findById(teamId)).thenReturn(Optional.of(existingTeam));
-        when(teamRepository.save(existingTeam)).thenReturn(existingTeam);
+        when(teamRepository.findTeamByName(request.getName())).thenReturn(Optional.of(anotherTeam));
 
-        Team result = teamService.updateTeam(request, teamId);
-
-        assertNotNull(result);
-        assertEquals(teamId, result.getId());
-        verify(teamMapper, times(1)).updateTeam(request, existingTeam);
-        verify(teamRepository, times(1)).save(existingTeam);
+        Exception exception = assertThrows(EntityAlreadyExists.class, () -> {
+            teamService.updateTeam(request, teamId);
+        });
+        assertEquals("Team with this name already exists", exception.getMessage());
     }
+
+
+
 
     @Test
     void shouldThrowEntityNotFoundWhenUpdatingNonExistentTeam() {

@@ -13,4 +13,6 @@ public interface TeamService {
     void deleteTeam(Long teamId);
 
     Team findById(Long teamId);
+
+    Team findByName(String name);
 }

@@ -37,6 +37,9 @@ public class TeamServiceImpl implements TeamService {
     @Override
     @Transactional
     public Team updateTeam(UpdateTeamRequest request, Long teamId) {
+        if (findByName(request.getName()) != null) {
+            throw new EntityAlreadyExists("Team with this name already exists");
+        }
         log.info("Updating team with id: {}", teamId);
         Team team = teamRepository.findById(teamId)
                 .orElseThrow(() -> new EntityNotFound("Team not found"));
@@ -61,5 +64,11 @@ public class TeamServiceImpl implements TeamService {
         log.info("Trying to find team with id: {}", teamId);
         return teamRepository.findById(teamId)
                 .orElseThrow(() -> new EntityNotFound("Team not found"));
+    }
+
+    @Override
+    public Team findByName(String name) {
+        return teamRepository.findTeamByName(name)
+                .orElseThrow(() -> new EntityNotFound("Team with name " + name + " not found"));
     }
 }
