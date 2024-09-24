@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "56e8147c-0e91-4279-9b4c-a6404ac33d26",
+		"name": "MediaSoftFoolballTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36411619"
+	},
+	"item": [
+		{
+			"name": "Team test",
+			"item": [
+				{
+					"name": "Post team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Machester City\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/teams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post team fail name null",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/teams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get team by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/teams/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teams",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update team",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Arsenal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/teams/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teams",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete team",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/teams/15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"teams",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MatchResult test",
+			"item": [
+				{
+					"name": "Post match result",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"season\" : \"24/25\",\r\n    \"matchDate\" : \"2024-09-20\",\r\n    \"homeTeam_id\" : 14,\r\n    \"guestTeam_id\" : 16,\r\n    \"homeTeamGoals\" : 1,\r\n    \"guestTeamGoals\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/results",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"results"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post match result fail season",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"season\" : \"season 2024\",\r\n    \"matchDate\" : \"2024-09-23\",\r\n    \"homeTeam_id\" : 9,\r\n    \"guestTeam_id\" : 12,\r\n    \"homeTeamGoals\" : 1,\r\n    \"guestTeamGoals\" : 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/results",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"results"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post match result fail match date",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"season\" : \"24/25\",\r\n    \"matchDate\" : \"24 сентября\",\r\n    \"homeTeam_id\" : 9,\r\n    \"guestTeam_id\" : 12,\r\n    \"homeTeamGoals\" : 1,\r\n    \"guestTeamGoals\" : 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/results",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"results"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post match result fail not exists home team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"season\" : \"24/25\",\r\n    \"matchDate\" : \"2024-09-23\",\r\n    \"homeTeam_id\" : 5000,\r\n    \"guestTeam_id\" : 12,\r\n    \"homeTeamGoals\" : 1,\r\n    \"guestTeamGoals\" : 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/results",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"results"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post match result fail guest team not found",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"season\" : \"24/25\",\r\n    \"matchDate\" : \"2024-09-23\",\r\n    \"homeTeam_id\" : 9,\r\n    \"guestTeam_id\" : 5000,\r\n    \"homeTeamGoals\" : 1,\r\n    \"guestTeamGoals\" : 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/results",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"results"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post match result fail not positive goals",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"season\" : \"24/25\",\r\n    \"matchDate\" : \"2024-09-23\",\r\n    \"homeTeam_id\" : 9,\r\n    \"guestTeam_id\" : 12,\r\n    \"homeTeamGoals\" : -1,\r\n    \"guestTeamGoals\" : 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/results",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"results"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update match result goals",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"homeTeamGoals\" : 5,\r\n    \"guestTeamGoals\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/results/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"results",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update match result change teams",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"homeTeam_id\" : 13\r\n    //\"guestTeam_id\" : 16\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/results/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"results",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get match result by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/results/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"results",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete match result",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Season table",
+			"item": [
+				{
+					"name": "Get season result",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/season_result?date=2024-09-23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"season_result"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-09-23"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
