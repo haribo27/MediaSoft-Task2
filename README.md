@@ -29,7 +29,7 @@
 mvn clean package
 ```
 
-№№№ 2. Сборка образа и запуск контейнеров Docker
+### 2. Сборка образа и запуск контейнеров Docker
 
 ```bash
 docker compose up --build
